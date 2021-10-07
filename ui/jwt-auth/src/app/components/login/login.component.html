@@ -1,0 +1,27 @@
+<div class="h-100 d-flex justify-content-center align-items-center">
+    <span class="border rounded">
+        <div class="p-3 bg-white text-dark">
+            <form [formGroup]="signInForm" (ngSubmit)="submitSignInForm()">
+                <div class="mb-2">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" formControlName="email" id="email">
+                    <span *ngIf="(email!.dirty || email!.touched || submitted) && email!.invalid && email!.errors!.required" class="text-danger">
+                        Email is required
+                    </span>
+                </div>
+                <div class="mb-2">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password" id="password">
+                    <span *ngIf="(password!.dirty || password!.touched || submitted) && password!.invalid && password!.errors!.required" class="text-danger">
+                        Password is required
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" style="width:100%">Submit</button>
+            </form>
+            <div *ngIf="apiError" class="text-danger text-center">
+                <br>
+                <p>{{apiError}}</p>
+            </div>
+        </div>
+    </span>
+</div>
